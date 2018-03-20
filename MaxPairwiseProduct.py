@@ -1,4 +1,8 @@
 # uses python3
+
+
+import random
+
 def max_pairwise(n,a):
     #n = int(input())
     #a = [int(x) for x in input().split()]
@@ -15,7 +19,7 @@ def max_pairwise(n,a):
         index2=0
 
     for j in range(0,n):
-        if index1!= j and a[j]>a[index2]:
+        if a[index1]!= a[j] and a[j]>a[index2]:
             index2=j
 
     return(a[index1]*a[index2])
@@ -33,7 +37,20 @@ def max_pairwiseslow(n,a):
                 product=a[i]*a[j]
 
     return product
+m=0
+while (m<= 10):
+
+    n = random.randint(2, 6)
+    a = [random.randint(1, 4) for x in range(1, n + 1)]
 
 
+    fast = max_pairwise(n,a)
+    low = max_pairwiseslow(n,a)
+    m+=1
+    if(low == fast):
+        print("Ok")
+    else:
+        break
+print("Error")
+print("The array a {} and the values of two function {} , {}".format(a,max_pairwise(n,a),max_pairwiseslow(n,a)))
 
-print(max_pairwiseslow())
